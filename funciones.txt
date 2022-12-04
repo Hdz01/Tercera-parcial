@@ -1,0 +1,62 @@
+#funcion sin argumentos 
+defmodule HolaMundo do
+ def mensaje do
+IO.puts("Hola Mundo")
+ end
+end
+
+#funcion con argumentos 
+defmodule Calculadora do
+ def suma(n1,n2) do
+ n1 + n2
+ end
+end
+
+#funciones de manera condensada 
+defmodule Geometria do
+ def perimetro_cuadrado(l), do: 4*l
+ def perimetro_rectangulo(l1,l2), do: 2*l1 + 2*l2
+end
+
+#salida 
+iex()> c("modulo01.ex") 
+[Geometria]
+iex()> Geometria.perimetro_cuadrado(4) 
+16 
+iex()> Geometria.perimetro_rectangulo(4,3)
+14
+
+#Invocaciones internas de una función no requieren del prefijo del nombre del módulo
+defmodule Geometria do
+ def perimetro1(l), do: cuadrado(l)
+ def perimetro2(l), do: Geometria.cuadrado(l)
+ def cuadrado(l), do: 4*l
+end
+
+#salida 
+iex()> c("modulo01.ex") 
+[Geometria]
+iex()> Geometria.perimetro1(4) 
+16
+iex()> Geometria.perimetro2(4) 
+16
+iex()> Geometria.cuadrado(4) 
+16
+
+#visibilidad de funciones 
+defmodule TestPublicoPrivado do
+ def funcion_publica(msg) do
+ IO.puts("#{msg} publico")
+ funcion_privada(msg)
+ end
+ defp funcion_privada(msg) do
+ IO.puts("#{msg} privado")
+ end
+end
+TestPublicoPrivado.funcion_publica("este es un mensaje")
+
+#salida 
+iex> c("modulo01.ex")
+este es un mensaje publico
+este es un mensaje privado
+[TestPublicoPrivado]
