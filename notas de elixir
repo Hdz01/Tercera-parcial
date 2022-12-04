@@ -49,7 +49,7 @@ iex()> System.halt
 C:\>
 """
 
-# Cristian Larios
+
 # • Para pedir ayuda del Shell
 """
 iex()> h
